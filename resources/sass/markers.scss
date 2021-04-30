@@ -1,0 +1,51 @@
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+#markers {
+    main {
+        header {
+            #toolbar-searchbox {
+                display: none;
+                & ~ div.part1 { display: inline-block; }
+                & ~ div.part2 { display: none; }
+
+                &:checked {
+                    & ~ div.part1 { display: none; }
+                    & ~ div.part2 { display: inline-block; }
+                }
+            }
+        }
+
+        table {
+            td.label {
+                max-width: 1rem;
+
+                span.icon {
+                    text-align: left;
+                    margin-right: $caret-spacing;
+                }
+            }
+
+            td.client {
+                text-align: right;
+                width: 8rem;
+            }
+
+            td.date {
+                text-align: right;
+                width: 10rem;
+            }
+
+            td.actions {
+                width: 3rem;
+                text-align: right;
+
+                form {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,30 @@
+
+#resets {
+    main {
+        table {
+            td.user {
+                max-width: 1rem;
+            }
+
+            td.token {
+                width: 10rem;
+                text-align: right;
+            }
+
+            td.status {
+                width: 18rem;
+                text-align: right;
+            }
+
+            td.actions {
+                width: 3rem;
+                text-align: right;
+
+                form {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+

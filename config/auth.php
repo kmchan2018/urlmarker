@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'invites' => 'users',
     ],
 
     /*
@@ -42,9 +43,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'users',
-            'hash' => false,
         ],
     ],
 
@@ -70,11 +70,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -95,9 +90,27 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table' => 'urlmarker_resets',
+            'expire' => 60 * 24 * 7,
             'throttle' => 60,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Invite Codes
+    |--------------------------------------------------------------------------
+    |
+    | The expire time is the number of minutes that the invite code should be
+    | considered valid. This security feature keeps tokens short-lived so
+    | they have less time to be guessed. You may change this as needed.
+    |
+    */
+
+    'invites' => [
+        'users' => [
+            'table' => 'urlmarker_invites',
+            'expire' => 60 * 24 * 3,
         ],
     ],
 

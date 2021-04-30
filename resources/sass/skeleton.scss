@@ -1,0 +1,19 @@
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+body > section.content {
+    min-height: calc(100vh - 7.5rem);
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+body > section.footer {
+    line-height: 2rem;
+    font-size: smaller;
+
+    div.right {
+        text-align: right;
+    }
+}
+

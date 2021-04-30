@@ -1,0 +1,19 @@
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+#home {
+    main {
+        table {
+            td.label {
+                max-width: 1rem;
+            }
+
+            td.date {
+                text-align: right;
+                width: 15rem;
+            }
+        }
+    }
+}
+

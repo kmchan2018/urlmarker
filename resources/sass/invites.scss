@@ -1,0 +1,25 @@
+
+#invites {
+    main {
+        table {
+            td.label {
+                max-width: 1rem;
+            }
+
+            td.status {
+                width: 18rem;
+                text-align: right;
+            }
+
+            td.actions {
+                width: 3rem;
+                text-align: right;
+
+                form {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+

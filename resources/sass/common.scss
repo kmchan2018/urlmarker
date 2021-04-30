@@ -1,0 +1,305 @@
+
+@use 'sass:map';
+@use 'sass:color';
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/mixins';
+
+/*
+    Preserve space for scroll bar whether it is needed or not. Copied from:
+    https://css-tricks.com/elegant-fix-jumping-scrollbar-issue/
+*/
+
+html {
+    margin-left: calc(100vw - 100%);
+}
+
+/*
+    Page caption locates at the top of the page content area and shows the
+    title of the page. It can optionally includes a iconbar for triggering
+    different actions.
+*/
+
+.caption {
+    display: flex;
+    height: 2 * $navbar-padding-y + 2 * $btn-padding-y + $btn-line-height;
+    padding: $navbar-padding-y $navbar-padding-x;
+    margin: 0;
+    border: 0;
+    border-bottom: $border-width solid $border-color;
+    line-height: $btn-line-height;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: $body-color;
+    background: map.get($theme-colors, "light");
+
+    > .caption-title {
+        order: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: content;
+    }
+
+    > .caption-actions {
+        order: 1;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: content;
+    }
+
+    .iconbar {
+        .iconbar-item {
+            color: color.scale($body-color, $lightness: 25%);
+        }
+
+        .iconbar-item:hover {
+            color: $body-color;
+        }
+
+        .iconbar-placeholder {
+            color: color.scale(map.get($theme-colors, "light"), $lightness: -25%);
+        }
+    }
+}
+
+/*
+    Iconbar is a horizontal toolbar composed of icons.
+*/
+
+.iconbar {
+    user-select: none;
+
+    .iconbar-item,
+    .iconbar-placeholder,
+    .iconbar-separator {
+        display: inline-block;
+        padding: 0;
+        margin: 0 map.get($spacers, 2) / 2;
+        border: 0;
+        text-align: center;
+        background: transparent;
+        color: inherit;
+    }
+
+    .iconbar-item.iconbar-icon,
+    .iconbar-placeholder.iconbar-icon {
+        width: 1.2rem;
+        min-width: 1.2rem;
+    }
+
+    a.iconbar-item {
+        text-decoration: none;
+    }
+
+    label.iconbar-item {
+        cursor: pointer;
+    }
+
+    > .iconbar-item:first-child,
+    > .iconbar-placeholder:first-child {
+        margin-left: 0;
+    }
+
+    > .iconbar-item:last-child,
+    > .iconbar-placeholder:last-child {
+        margin-right: 0;
+    }
+
+    > :first-child .iconbar-item,
+    > :first-child .iconbar-placeholder {
+        margin-left: 0;
+    }
+
+    > :last-child .iconbar-item,
+    > :last-child .iconbar-placeholder {
+        margin-right: 0;
+    }
+}
+
+/*
+    Input bar form is a simple form that contains a text box followed by
+    several iconic button on the right. The form is styled such that it
+    appears as is a single input box. This style of form is commonly used
+    for search functions.
+*/
+
+form.input-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: $input-height;
+    padding: 0 $input-padding-x / 2;
+    border: $input-border-width solid $input-border-color;
+    color: $input-color;
+    background-color: $input-bg;
+    background-clip: padding-box;
+
+    @include border-radius($input-border-radius, 0);
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+
+    &:focus-within {
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
+        border-color: $input-focus-border-color;
+        @if $enable-shadows {
+            @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+        } @else {
+            box-shadow: $input-focus-box-shadow;
+        }
+    }
+
+    input, button, label.button {
+        @include font-size($input-font-size);
+        display: block;
+        height: $input-height;
+        padding: $input-padding-y $input-padding-x / 2;
+        border: 0;
+        outline: 0;
+        font-family: $input-font-family;
+        font-weight: $input-font-weight;
+        line-height: $input-line-height;
+        color: $input-color;
+        background-color: transparent;
+    }
+
+    input {
+        order: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 0; // https://bugzilla.mozilla.org/show_bug.cgi?id=1242914
+
+        &:-moz-focusring {
+            color: $input-color;
+            text-shadow: 0 0 0 transparent;
+        }
+
+        &::placeholder {
+            color: $input-placeholder-color;
+            opacity: 1;
+        }
+    }
+
+    button, label.button {
+        order: 1;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}
+
+/*
+    Iconic input is a form input that looks like a text input with icons
+    on the side.
+*/
+
+.form-iconic-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: $input-height;
+    padding: 0;
+    border: $input-border-width solid $input-border-color;
+    color: $input-color;
+    background-color: $input-bg;
+    background-clip: padding-box;
+
+    @include border-radius($input-border-radius, 0);
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+
+    &:focus-within {
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
+        border-color: $input-focus-border-color;
+        @if $enable-shadows {
+            @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+        } @else {
+            box-shadow: $input-focus-box-shadow;
+        }
+    }
+
+    label {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: calc(1rem + 2 * #{$input-padding-x});
+        padding: $input-padding-y $input-padding-x;
+        line-height: $input-line-height;
+        color: $input-color;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    input {
+        @include font-size($input-font-size);
+        flex-grow: 1;
+        flex-shrink: 1;
+        display: block;
+        height: $input-height;
+        min-width: 0; // https://bugzilla.mozilla.org/show_bug.cgi?id=1242914
+        padding: $input-padding-y $input-padding-x;
+        border: 0;
+        outline: 0;
+        font-family: $input-font-family;
+        font-weight: $input-font-weight;
+        line-height: $input-line-height;
+        color: $input-color;
+        background-color: transparent;
+
+        &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 transparent;
+        }
+
+        &::placeholder {
+            color: $input-placeholder-color;
+            opacity: 1;
+        }
+
+        &:focus {
+            color: $input-focus-color;
+        }
+
+        &:first-child {
+            padding-right: 0;
+        }
+
+        &:last-child {
+            padding-left: 0;
+        }
+    }
+}
+
+/*
+    Model table is a table that shows models in a tabular format. It may
+    contains an 'actions' column which contains a iconbar for triggering
+    actions for that specific model.
+*/
+
+table.model-table,
+table.record-table {
+    tr:first-child td {
+        border-top: 0;
+    }
+
+    td.actions {
+        .iconbar-item {
+            color: color.scale($table-color, $lightness: 15%);
+        }
+
+        .iconbar-item:hover {
+            color: $table-color;
+        }
+
+        .iconbar-placeholder {
+            color: $text-muted;
+        }
+    }
+}
+

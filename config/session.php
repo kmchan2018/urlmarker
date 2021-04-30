@@ -142,7 +142,7 @@ return [
     |
     */
 
-    'path' => '/',
+    'path' => env('SESSION_PATH', '/urlmarker'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', null),
+    'domain' => env('SESSION_DOMAIN', 'desktop.kmchan3.space'),
 
     /*
     |--------------------------------------------------------------------------

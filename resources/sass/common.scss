@@ -11,8 +11,10 @@
     https://css-tricks.com/elegant-fix-jumping-scrollbar-issue/
 */
 
-html {
-    margin-left: calc(100vw - 100%);
+section.header,
+section.content,
+section.footer {
+    padding-left: calc(100vw - 100%);
 }
 
 /*

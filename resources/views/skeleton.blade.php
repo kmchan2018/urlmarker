@@ -15,7 +15,7 @@
 @section('data')
 @show
 >
-    <section class="header">
+    <section class="header bg-dark">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand ml-3" href="{{ route('home') }}">URL Marker</a>
@@ -62,14 +62,16 @@
         </nav>
     </section>
 
-    <section class="content container">
-        <div class="row">
-            <main class="col-8">
-                @yield('main')
-            </main>
-            <aside class="col-4">
-                @yield('aside')
-            </aside>
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <main class="col-8">
+                    @yield('main')
+                </main>
+                <aside class="col-4">
+                    @yield('aside')
+                </aside>
+            </div>
         </div>
     </section>
 

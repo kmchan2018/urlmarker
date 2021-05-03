@@ -44,7 +44,7 @@ class Bootstrap extends Command
             $password = $this->secret('Please enter root user password:');
             $confirm = $this->secret('Please confirm root user password:');
 
-            if (hash_equals($password, $confirm) !== 0) {
+            if (hash_equals($password, $confirm) === false) {
                 $this->error("Root user passwords do not match");
             } else {
                 try {

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Marker;
-use App\User;
+use App\Models\Marker;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class MarkerSeeder extends Seeder

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        App\User::firstOrCreate(
+        User::firstOrCreate(
             [
                 'name' => 'root',
             ],
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             ]
         );
 
-        App\User::firstOrCreate(
+        User::firstOrCreate(
             [
                 'name' => 'user',
             ],
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         );
 
         for ($i = 0; $i < 10; $i++) {
-            App\User::firstOrCreate(
+            User::firstOrCreate(
                 [
                     'name' => sprintf('dummy%02d', $i),
                 ],

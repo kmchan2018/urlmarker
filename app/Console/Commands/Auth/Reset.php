@@ -45,7 +45,7 @@ class Reset extends Command
             $this->error("Root user passwords do not match");
         } else {
             try {
-                if (($root = User::where('name', 'root')->find()) !== null) {
+                if (($root = User::where('name', 'root')->first()) !== null) {
                     $root->password = Hash::make($password);
                     $root->role = User::ADMIN;
                     $root->status = User::ACTIVE;

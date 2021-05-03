@@ -38,7 +38,7 @@ class Bootstrap extends Command
      */
     public function handle()
     {
-        if (($root = User::where('name', 'root')->find()) !== null) {
+        if (($root = User::where('name', 'root')->first()) !== null) {
             $this->info("Root user already existed and therefore no change is made");
         } else {
             $password = $this->secret('Please enter root user password:');
